@@ -1,38 +1,146 @@
-.App {
-  text-align: center;
+.app-wrapper {
+  display: grid;
+  width: 1200px;
+  margin: 0 auto;
+
+  grid-template-areas:
+  'h h'
+  'n p';
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* --------------HEADER------------*/
+.header {
+  grid-area: h;
+  background-color: steelblue;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header img {
+  width: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* --------------NAV------------*/
+.nav {
+  grid-area: n;
+  background-color: cadetblue;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.nav a {
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav .nav-links {
+  margin-top: 15px;
+}
+
+.nav .settings {
+  margin-top: 50px;
+}
+
+
+
+/* --------------POFILE------------*/
+.profile {
+  grid-area: p;
+  display: grid;
+
+  grid-template-areas:
+  'cover-pic'
+  'about-me'
+  'my-posts';
+  grid-template-rows: 200px 2fr 2fr;
+  grid-template-columns: 1fr;
+}
+
+.profile .cover-picture {
+  grid-area: cover-pic;
+  margin: 20px;
+}
+
+.profile .cover-picture img {
+  height: 200px;
+  width: 100%;
+}
+
+.profile .about-me {
+  grid-area: about-me;
+  display: grid;
+  margin: 40px 20px;
+
+  grid-template-areas:
+  'about-me-avatar about-me-info';
+  grid-template-rows: 300px;
+  grid-template-columns: 1fr 5fr;
+}
+
+.profile .about-me .about-me-avatar {
+  grid-area: about-me-avatar;
+}
+
+.profile .about-me .about-me-avatar img{
+  width: 300px;
+}
+
+.profile .about-me-info {
+  grid-area: about-me-info;
+
+}
+
+.profile .about-me .about-me-info h2 {
+  margin-left: 40px;
+}
+
+.profile .about-me .about-me-info li {
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.profile .my-posts {
+  grid-area: my-posts;
+  margin: 20px;
+}
+
+.profile .my-posts .send-post input {
+  height: 50px;
+  border: cornflowerblue 1px solid;
+  font-size: 15px;
+}
+
+.profile .my-posts .send-post a {
+  display: inline-block;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: steelblue 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+  margin-top: 20px;
+}
+.profile .my-posts .send-post a:hover {
+  background-color: royalblue;
+}
+.profile .my-posts .send-post a:active {
+  background: white;
+}
+
+.profile .my-posts .sent-posts {
+  margin-top: 50px;
+  width: 600px;
+}
+
+.profile .my-posts .sent-posts img {
+  width: 60px;
+}
+
+.profile .my-posts .sent-posts p {
+  width: 500px;
+  float: right;
+  margin-bottom: 20px;
 }
