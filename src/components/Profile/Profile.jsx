@@ -1,15 +1,15 @@
 import React from "react";
-import AboutMe from "./AboutMe";
-import MyPosts from "./MyPosts";
-import CoverPicture from "./CoverPicture";
+import AboutMe from "./Aboutme/AboutMe";
+import Posts from "./Posts/Posts";
+import CoverPicture from "./CoverPicture/CoverPicture";
 import style from './Profile.module.css'
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <div className={style.profile}>
             <CoverPicture />
             <AboutMe />
-            <MyPosts />
+            <Posts posts={props.state.posts}/>
         </div>
     )
 }
