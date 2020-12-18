@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "./Post/Post";
-import SendPost from "./SendPost/SendPost";
 import style from './Posts.module.css'
+import SendPostContainer from "./SendPost/SendPostContainer";
 
 
 
@@ -13,7 +13,7 @@ const Posts = (props) => {
 
     return (
         <div className={style.myPosts}>
-            <SendPost state={props.state} store={props.store}/>
+            <SendPostContainer state={props.state} store={props.store}/>
             {posts}
         </div>
     )
