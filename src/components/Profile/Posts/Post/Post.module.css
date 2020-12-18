@@ -1,0 +1,14 @@
+.Post {
+    margin-top: 50px;
+    width: 600px;
+}
+
+.Post img {
+    width: 60px;
+}
+
+.Post p {
+    width: 500px;
+    float: right;
+    margin-bottom: 20px;
+}

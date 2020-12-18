@@ -7,14 +7,13 @@ import style from './Posts.module.css'
 
 const Posts = (props) => {
 
-
-    let posts = props.posts.map( (post) => {
+    let posts = props.state.profilePage.posts.map( (post) => {
         return <Post id={post.id} message={post.message} likes={post.likes} />
     })
 
     return (
         <div className={style.myPosts}>
-            <SendPost />
+            <SendPost state={props.state} store={props.store}/>
             {posts}
         </div>
     )

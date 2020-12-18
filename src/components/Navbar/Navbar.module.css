@@ -1,0 +1,26 @@
+.nav {
+    grid-area: n;
+    background-color: cadetblue;
+    margin-top: 20px;
+}
+
+.navLinks {
+    margin-top: 15px;
+}
+
+.navLinks a {
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+    padding-left: 5px;
+}
+
+.navLinks a.active {
+    font-size: 30px;
+    text-decoration: none;
+    color: gold;
+}
+
+.settings {
+    margin-top: 50px;
+}

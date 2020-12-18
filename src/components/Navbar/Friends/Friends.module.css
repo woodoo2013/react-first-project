@@ -1,0 +1,14 @@
+.friendsList {
+    margin-top: 50px;
+    font-size: 25px;
+}
+
+.friends {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.friends h2 {
+    display: block;
+}

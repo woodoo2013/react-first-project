@@ -1,0 +1,23 @@
+.item {
+    margin-top: 10px;
+    font-size: 20px;
+    display: grid;
+
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.avatar {
+    width: 100px;
+    border: 3px solid royalblue;
+    border-radius: 50%;
+}
+
+.item a {
+    padding-top: 22px;
+}
+
+.active {
+    color: gold;
+}

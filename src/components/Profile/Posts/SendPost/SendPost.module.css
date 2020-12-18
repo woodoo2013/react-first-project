@@ -1,0 +1,17 @@
+.sendPost input {
+    height: 50px;
+    border: cornflowerblue 1px solid;
+    font-size: 15px;
+}
+
+.sendPost button {
+    
+}
+
+.sendPost a:hover {
+    background-color: royalblue;
+}
+
+.sendPost a:active {
+    background: white;
+}

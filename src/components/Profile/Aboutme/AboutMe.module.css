@@ -1,0 +1,31 @@
+.aboutMe {
+    grid-area: about-me;
+    display: grid;
+    margin: 40px 20px;
+
+    grid-template-areas:
+    'about-me-avatar about-me-info';
+    grid-template-rows: 300px;
+    grid-template-columns: 1fr 5fr;
+}
+
+.avatar {
+    grid-area: about-me-avatar;
+}
+
+.avatar img{
+    width: 300px;
+}
+
+.info {
+    grid-area: about-me-info;
+}
+
+.info h2 {
+    margin-left: 40px;
+}
+
+.info li {
+    list-style-type: none;
+    font-size: 20px;
+}

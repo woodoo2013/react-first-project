@@ -1,0 +1,10 @@
+.profile {
+    display: grid;
+
+    grid-template-areas:
+    'cover-pic'
+    'about-me'
+    'my-posts';
+    grid-template-rows: 150px 300px 0.5fr;
+    grid-template-columns: 1fr;
+}

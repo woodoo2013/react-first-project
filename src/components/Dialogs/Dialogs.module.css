@@ -1,0 +1,37 @@
+.dialogs {
+    color: black;
+    display: grid;
+    padding: 20px;
+    grid-template-columns: 2fr 5fr;
+}
+
+.dialogItems {
+
+}
+
+.messages {
+    border: black 2px solid;
+}
+
+.messages input {
+    width: 80%;
+    height: 40px;
+    border: 1px solid cornflowerblue;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-family: "Courier New";
+    font-size: 20px;
+}
+
+.messages button {
+    width: 90px;
+    height: 30px;
+    margin-left: 10px;
+    font-family: Verdana;
+    font-size: 20px;
+    background-color: cornflowerblue;
+}
+
+.messages button:active{
+    background-color: #2a75b0;
+}

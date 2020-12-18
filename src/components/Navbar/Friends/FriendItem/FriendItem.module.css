@@ -1,0 +1,10 @@
+.item {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.item img {
+    width: 60px;
+    border: royalblue 2px solid;
+    border-radius: 50%;
+}

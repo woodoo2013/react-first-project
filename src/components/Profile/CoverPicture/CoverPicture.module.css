@@ -1,0 +1,9 @@
+.coverPicture {
+    grid-area: cover-pic;
+    margin: 20px;
+}
+
+.coverPicture img {
+    height: 150px;
+    width: 100%;
+}
