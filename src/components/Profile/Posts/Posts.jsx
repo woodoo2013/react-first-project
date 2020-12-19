@@ -13,7 +13,7 @@ const Posts = (props) => {
 
     return (
         <div className={style.myPosts}>
-            <SendPostContainer state={props.state} store={props.store}/>
+            <SendPostContainer />
             {posts}
         </div>
     )
