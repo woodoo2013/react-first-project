@@ -9,10 +9,10 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) => {
     return {
         dialogsElements: state.dialogsPage.dialogs.map( (dialogElement) => {
-            return <DialogItem id={dialogElement.id} name={dialogElement.name} avatar={dialogElement.avatar}/>
+            return <DialogItem key={dialogElement.id} id={dialogElement.id} name={dialogElement.name} avatar={dialogElement.avatar}/>
         }),
         messages: state.dialogsPage.messages.map( (messageElement) => {
-            return <MessageItem id={messageElement.id} message={messageElement.message} />
+            return <MessageItem key={messageElement.id} id={messageElement.id} message={messageElement.message} />
         }),
         dialogsPage: state.dialogsPage
     }

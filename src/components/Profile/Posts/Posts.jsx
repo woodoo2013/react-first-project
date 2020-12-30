@@ -1,20 +1,26 @@
 import React from "react";
-import Post from "./Post/Post";
 import style from './Posts.module.css'
-import SendPostContainer from "./SendPost/SendPostContainer";
-
 
 
 const Posts = (props) => {
+    let newPostElement = React.createRef();
 
-    let posts = props.state.profilePage.posts.map( (post) => {
-        return <Post id={post.id} message={post.message} likes={post.likes} />
-    })
+    let onAddPost = () => {
+        props.addPost();
+    }
+
+    let onUpdateNewPostText = () => {
+        let text = newPostElement.current.value;
+        props.updateNewPostText(text);
+    }
+
 
     return (
         <div className={style.myPosts}>
-            <SendPostContainer />
-            {posts}
+            <h2>My posts</h2>
+            <input onChange={ onUpdateNewPostText } ref={newPostElement} type="text" placeholder='Send anything' size='120' value={props.profilePage.newPostText}/>
+            <button onClick={ onAddPost } href='#'>Send</button>
+            {props.posts}
         </div>
     )
 }

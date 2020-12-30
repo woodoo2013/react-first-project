@@ -7,7 +7,7 @@ const Navbar = (props) => {
     return (
         <nav className={style.nav}>
             <div className={style.navLinks}>
-                <NavLink to='/profile' activeClassName={style.active}>Profile</NavLink>
+                <NavLink to='profile' activeClassName={style.active}>Profile</NavLink>
             </div>
             <div className={style.navLinks}>
                 <NavLink to='/dialogs' activeClassName={style.active}>Messages</NavLink>
@@ -16,10 +16,13 @@ const Navbar = (props) => {
                 <NavLink to='/news' activeClassName={style.active}>News</NavLink>
             </div>
             <div className={style.navLinks}>
-                <NavLink to='music' activeClassName={style.active}>Music</NavLink>
+                <NavLink to='/music' activeClassName={style.active}>Music</NavLink>
+            </div>
+            <div className={style.navLinks}>
+                <NavLink to='/users' activeClassName={style.active}>Find Users</NavLink>
             </div>
             <div className={`${style.navLinks} ${style.settings}`}>
-                <NavLink to='settings' activeClassName={style.active}>Settings</NavLink>
+                <NavLink to='/settings' activeClassName={style.active}>Settings</NavLink>
             </div>
             {/*<Friends state={props.state.dialogsPage} />*/}
         </nav>
