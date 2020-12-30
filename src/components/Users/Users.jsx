@@ -8,15 +8,20 @@ let Users = (props) => {
 
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
+        if (pages.length == 30 ) {
+            break
+        }
         pages.push(i);
     }
 
     return <div>
-        {pages.map(page => {
-            return <span onClick={(event) => {
-                props.onPageChanged(page)
-            }} className={props.currentPage === page ? style.selectedPage : ''}>{page}</span>
-        })}
+        <div className={style.pagesContainer}>
+            {pages.map(page => {
+                return <span onClick={(event) => {
+                    props.onPageChanged(page)
+                }} className={props.currentPage === page ? style.selectedPage : ''}>{page}</span>
+            })}
+        </div>
         {props.users.map((user) => <div key={user.id}>
             <div className={style.userItem}>
                 <div className={style.avatar}>
