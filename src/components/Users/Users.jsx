@@ -1,6 +1,7 @@
 import React from "react";
 import style from './Users.module.css'
 import defaultAvatar from '../../assets/images/defaultAvatar.png'
+import {NavLink} from "react-router-dom";
 
 let Users = (props) => {
 
@@ -31,7 +32,9 @@ let Users = (props) => {
                         : <button onClick={() => {
                             props.follow(user.id)
                         }}>Follow</button>}
-                    <img src={user.photos.small != null ? user.photos.small : defaultAvatar}></img>
+                    <NavLink to={'/profile/' + user.id}>
+                        <img src={user.photos.small != null ? user.photos.small : defaultAvatar}></img>
+                    </NavLink>
                 </div>
                 <div className={style.info}>
                     <div>{user.name}</div>
