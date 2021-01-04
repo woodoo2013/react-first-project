@@ -2,6 +2,7 @@ import React from "react";
 import style from './Users.module.css'
 import defaultAvatar from '../../assets/images/defaultAvatar.png'
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 let Users = (props) => {
 
@@ -28,10 +29,31 @@ let Users = (props) => {
                 <div className={style.avatar}>
                     {user.followed
                         ? <button onClick={() => {
-                            props.unfollow(user.id)}}>UnFollow</button>
+                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                                withCredentials: true,
+                                headers: {
+                                    "API-KEY": "b056e955-f282-4352-b6fe-b9e9a2109db5"
+                                }
+                            })
+                                .then(response => {
+                                    if (response.data.resultCode == 0) {
+                                        props.unfollow(user.id)
+                                    }
+                                })}
+                        }>UnFollow</button>
                         : <button onClick={() => {
-                            props.follow(user.id)
-                        }}>Follow</button>}
+                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
+                                withCredentials: true,
+                                headers: {
+                                    "API-KEY": "b056e955-f282-4352-b6fe-b9e9a2109db5"
+                                }
+                            })
+                                .then(response => {
+                                    if (response.data.resultCode == 0) {
+                                        props.follow(user.id)
+                                    }
+                                })}
+                        }>Follow</button>}
                     <NavLink to={'/profile/' + user.id}>
                         <img src={user.photos.small != null ? user.photos.small : defaultAvatar}></img>
                     </NavLink>

@@ -9,7 +9,10 @@ import Loader from "../common/Loader/Loader";
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`, {
+            withCredentials: true
+        })
+            .then(response => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(response.data.items);
             this.props.setTotalUsers(response.data.totalCount);
@@ -19,7 +22,10 @@ class UsersContainer extends React.Component {
     onPageChanged = (page) =>  {
         this.props.setCurrentPage(page)
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`, {
+            withCredentials: true
+        })
+            .then(response => {
             this.props.setUsers(response.data.items);
             this.props.toggleIsFetching(false)
         })
