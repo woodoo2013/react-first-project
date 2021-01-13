@@ -3,6 +3,7 @@ import style from './Users.module.css'
 import defaultAvatar from '../../assets/images/defaultAvatar.png'
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
+import {usersAPI} from "../../api/api";
 
 let Users = (props) => {
 
@@ -29,14 +30,9 @@ let Users = (props) => {
                 <div className={style.avatar}>
                     {user.followed
                         ? <button onClick={() => {
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
-                                withCredentials: true,
-                                headers: {
-                                    "API-KEY": "b056e955-f282-4352-b6fe-b9e9a2109db5"
-                                }
-                            })
-                                .then(response => {
-                                    if (response.data.resultCode == 0) {
+                            usersAPI.follow(user.id)
+                                .then(data => {
+                                    if (data.resultCode == 0) {
                                         props.unfollow(user.id)
                                     }
                                 })}
