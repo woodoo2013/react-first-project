@@ -4,6 +4,8 @@ import MessageItem from "./MessageItem/MessageItem";
 import {addMessage, updateNewTextMessage} from '../../redux/dialogs-reducer';
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 let mapStateToProps = (state) => {
@@ -18,6 +20,9 @@ let mapStateToProps = (state) => {
     }
 }
 
-const DialogsContainer = connect(mapStateToProps, {addMessage, updateNewTextMessage})(Dialogs)
+export default compose(
+    connect(mapStateToProps, {addMessage, updateNewTextMessage}),
+    withAuthRedirect
+)(Dialogs)
 
-export default DialogsContainer;
+// compose позволяет уменьшить запись для обертки контейнерными компонентами (обертка начинается снизу вверх)

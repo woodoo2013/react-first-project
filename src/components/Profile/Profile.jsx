@@ -4,7 +4,9 @@ import CoverPicture from "./CoverPicture/CoverPicture";
 import style from './Profile.module.css'
 import PostsContainer from "./Posts/PostsContainer";
 
+
 const Profile = (props) => {
+
     return (
         <div className={style.profile}>
             <CoverPicture  />

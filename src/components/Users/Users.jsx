@@ -8,7 +8,7 @@ let Users = (props) => {
 
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
-        if (pages.length == 30 ) {
+        if (pages.length === 30 ) {
             break
         }
         pages.push(i);
@@ -33,7 +33,7 @@ let Users = (props) => {
                             props.follow(user.id) }
                         }>Follow</button>}
                     <NavLink to={'/profile/' + user.id}>
-                        <img src={user.photos.small != null ? user.photos.small : defaultAvatar}></img>
+                        <img src={user.photos.small != null ? user.photos.small : defaultAvatar} alt="" />
                     </NavLink>
                 </div>
                 <div className={style.info}>
