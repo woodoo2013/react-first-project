@@ -1,7 +1,7 @@
 import React from "react";
 import style from './AboutMe.module.css'
 import Loader from "../../common/Loader/Loader";
-
+import ProfileStatus from "./ProfileStatus";
 
 const AboutMe = (props) => {
 
@@ -22,6 +22,7 @@ const AboutMe = (props) => {
                     <li>Education: TUSUR</li>
                     <li>VK: {props.profile.contacts.vk}</li>
                 </ul>
+                <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} />
             </div>
         </div>
     )
