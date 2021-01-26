@@ -1,7 +1,7 @@
 import React from 'react';
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {addMessage, updateNewTextMessage} from '../../redux/dialogs-reducer';
+import {addMessage} from '../../redux/dialogs-reducer';
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -21,7 +21,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {addMessage, updateNewTextMessage}),
+    connect(mapStateToProps, {addMessage}),
     //withAuthRedirect
 )(Dialogs)
 

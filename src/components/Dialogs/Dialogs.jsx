@@ -1,18 +1,12 @@
 import React from 'react';
 import style from './Dialogs.module.css'
+import DialogForm from "./DialogForm";
 
 
 const Dialogs = (props) => {
 
-    let newMessage = React.createRef()
-
-    let onAddMessage = () => {
-        props.addMessage();
-    }
-
-    let onUpdateNewTextMessage = () => {
-        let textMessage = newMessage.current.value;
-        props.updateNewTextMessage(textMessage);
+    let onSubmit = (dialogMessage) => {
+        props.addMessage(dialogMessage.dialogMessage);
     }
 
     return (
@@ -22,8 +16,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 {props.messages}
-                <input onChange={onUpdateNewTextMessage} ref={newMessage} type="text" value={props.dialogsPage.currentMessage}/>
-                <button onClick={onAddMessage}>Send</button>
+                <DialogForm onSubmit={onSubmit}/>
             </div>
         </div>
     )
