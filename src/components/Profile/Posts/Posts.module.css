@@ -3,12 +3,16 @@
     margin: 0 20px;
 }
 
-.myPosts input {
+.myPosts form input {
     height: 50px;
     border: cornflowerblue 1px solid;
     font-size: 15px;
+    width: 300px;
 }
 
-.myPosts button {
-
+.myPosts form button {
+    width: 100px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 20px;
 }
