@@ -1,9 +1,24 @@
 import React from 'react'
+import LoginReduxForm from "./LoginForm";
 
-const Login = () => {
+const Login = (props) => {
+
+    let onSubmit = (data) => {
+        let formData = {
+            email: data.login,
+            password: data.password,
+            rememberMe: data.rememberMe
+        }
+        props.userLogin(formData)
+        props.userAuth()
+    }
+
     return (
         <div>
-            LoginPage
+            <h1>
+                Login
+            </h1>
+            <LoginReduxForm onSubmit={onSubmit} />
         </div>
     )
 }
