@@ -38,11 +38,11 @@ export const authAPI = {
             return response.data;
         })
     },
-    login(formData) {
-        return axiosInstance.post(`auth/login`, formData)
-            .then(response => {
-                return response;
-            })
+    login(email, password, rememberMe) {
+        return axiosInstance.post(`auth/login`, {email, password, rememberMe})
+    },
+    logout() {
+        return axiosInstance.delete(`auth/login`)
     }
 }
 

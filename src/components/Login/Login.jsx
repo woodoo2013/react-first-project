@@ -1,16 +1,15 @@
 import React from 'react'
 import LoginReduxForm from "./LoginForm";
+import {Redirect} from "react-router-dom";
 
 const Login = (props) => {
 
-    let onSubmit = (data) => {
-        let formData = {
-            email: data.login,
-            password: data.password,
-            rememberMe: data.rememberMe
-        }
-        props.userLogin(formData)
-        props.userAuth()
+    let onSubmit = (formData) => {
+        props.userLogin(formData.login, formData.password, formData.rememberMe = false)
+    }
+
+    if (props.isAuth) {
+        return <Redirect to={'/profile'} />
     }
 
     return (

@@ -18,5 +18,6 @@ import {Provider} from "react-redux";
         document.getElementById('root')
     );
 
+window.store = store
 
 reportWebVitals();

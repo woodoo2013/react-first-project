@@ -5,18 +5,17 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 
 class LoginContainer extends React.Component {
-
-
     render() {
         return (
             <div>
-                <Login userLogin={this.props.userLogin}  userAuth={this.props.userAuth}/>
+                <Login userLogin={this.props.userLogin}  userAuth={this.props.userAuth} isAuth={this.props.isAuth}/>
             </div>
         )
     }
 }
 
 let mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
 })
 
 export default compose(
