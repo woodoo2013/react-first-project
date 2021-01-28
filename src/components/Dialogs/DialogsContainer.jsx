@@ -22,7 +22,7 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {addMessage}),
-    //withAuthRedirect
+    withAuthRedirect
 )(Dialogs)
 
 // compose позволяет уменьшить запись для обертки контейнерными компонентами (обертка начинается снизу вверх)
