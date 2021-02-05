@@ -2,17 +2,18 @@ import React from "react";
 import style from './AboutMe.module.css'
 import Loader from "../../common/Loader/Loader";
 import ProfileStatusHooks from "./ProfileStatusHooks";
+import Avatar from "../../common/Avatar/Avatar";
+
 
 const AboutMe = (props) => {
 
     if(!props.profile) {
         return <Loader />
     }
-
     return (
         <div className={style.aboutMe}>
             <div className={style.avatar}>
-                <img src={props.profile.photos.large}  alt="Avatar"/>
+                <Avatar avatar={props.profile.photos.large} />
             </div>
             <div className={style.info}>
                 <h2>{props.profile.fullName}</h2>

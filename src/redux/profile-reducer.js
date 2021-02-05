@@ -5,16 +5,16 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 
 let initialState = {
-        posts: [
-            {id: 1, message: 'Hellow', likes: 1},
-            {id: 2, message: 'Hello', likes: 13},
-            {id: 3, message: 'How are you', likes: 121},
-            {id: 4, message: 'Oleg', likes: 22},
-            {id: 5, message: 'VVVV', likes: 33},
-        ],
-        profile: null,
-        status: ''
-    }
+    posts: [
+        {id: 1, message: 'Hellow', likes: 1},
+        {id: 2, message: 'Hello', likes: 13},
+        {id: 3, message: 'How are you', likes: 121},
+        {id: 4, message: 'Oleg', likes: 22},
+        {id: 5, message: 'VVVV', likes: 33},
+    ],
+    profile: null,
+    status: ''
+}
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -53,32 +53,20 @@ export const setUserStatus = (status) => {
 
 
 //thunk
-export const getUserProfile = (userId) => {
-    return (dispatch) => {
-        profileAPI.getProfile(userId)
-            .then(data => {
-                dispatch(setUserProfile(data))
-            })
-    }
+export const getUserProfile = (userId) => async (dispatch) => {
+    let data = await profileAPI.getProfile(userId)
+    dispatch(setUserProfile(data))
 }
 
-export const getUserStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getProfileStatus(userId)
-            .then(data => {
-                dispatch(setUserStatus(data))
-            })
-    }
+export const getUserStatus = (userId) => async (dispatch) => {
+    let data = await profileAPI.getProfileStatus(userId)
+    dispatch(setUserStatus(data))
 }
 
-export const updateUserStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateProfileStatus(status)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(setUserStatus(status))
-                }
-            })
+export const updateUserStatus = (status) => async (dispatch) => {
+    let data = await profileAPI.updateProfileStatus(status)
+    if (data.resultCode === 0) {
+        dispatch(setUserStatus(status))
     }
 }
 

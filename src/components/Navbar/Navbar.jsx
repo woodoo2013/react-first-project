@@ -24,7 +24,6 @@ const Navbar = (props) => {
             <div className={`${style.navLinks} ${style.settings}`}>
                 <NavLink to='/settings' activeClassName={style.active}>Settings</NavLink>
             </div>
-            {/*<Friends state={props.state.dialogsPage} />*/}
         </nav>
     )
 }
