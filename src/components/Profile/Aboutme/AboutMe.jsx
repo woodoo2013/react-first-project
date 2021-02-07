@@ -6,15 +6,21 @@ import Avatar from "../../common/Avatar/Avatar";
 
 
 const AboutMe = (props) => {
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            props.changeAvatar(e.target.files[0])
+        }
+    }
 
-    if(!props.profile) {
-        return <Loader />
+    if (!props.profile) {
+        return <Loader/>
     }
     return (
         <div className={style.aboutMe}>
             <div className={style.avatar}>
-                <Avatar avatar={props.profile.photos.large} />
+                <Avatar avatar={props.profile.photos.large}/>
             </div>
+
             <div className={style.info}>
                 <h2>{props.profile.fullName}</h2>
                 <ul>
@@ -23,7 +29,16 @@ const AboutMe = (props) => {
                     <li>Education: TUSUR</li>
                     <li>VK: {props.profile.contacts.vk}</li>
                 </ul>
-                <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus} />
+                <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+                {props.isOwner &&
+                <div>
+                    <strong>Сменить аватар</strong>
+                    {!props.isAvatarInChangeProgress ?
+                        <input onChange={onMainPhotoSelected} type="file"></input> : <Loader/>
+                    }
+                </div>
+                }
+
             </div>
         </div>
     )

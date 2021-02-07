@@ -2,7 +2,7 @@ import React from "react";
 import style from './Profile.module.css'
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getUserProfile, getUserStatus, updateUserStatus} from "../../redux/profile-reducer";
+import {changeAvatar, getUserProfile, getUserStatus, updateUserStatus} from "../../redux/profile-reducer";
 import {withRouter} from 'react-router-dom'
 import {compose} from "redux";
 import Loader from "../common/Loader/Loader";
@@ -18,6 +18,17 @@ class ProfileContainer extends React.Component {
         this.props.getUserStatus(userId)
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.match.params.userId != prevProps.match.params.userId) {
+            let userId = this.props.match.params.userId
+            if(!userId) {
+                userId = this.props.authorizedUserId
+            }
+            this.props.getUserProfile(userId)
+            this.props.getUserStatus(userId)
+        }
+    }
+
     render() {
         if(!this.props.profile) {
             return <Loader/>
@@ -27,7 +38,11 @@ class ProfileContainer extends React.Component {
                 <Profile {...this.props}
                          profile={this.props.profile}
                          status={this.props.status}
-                         updateUserStatus={this.props.updateUserStatus} />
+                         updateUserStatus={this.props.updateUserStatus}
+                         changeAvatar={this.props.changeAvatar}
+                         isAvatarInChangeProgress={this.props.isAvatarInChangeProgress}
+                         isOwner={!this.props.match.params.userId}
+                />
             </div>
         )
     }
@@ -36,10 +51,11 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
-    authorizedUserId: state.auth.userId
+    authorizedUserId: state.auth.userId,
+    isAvatarInChangeProgress: state.profilePage.isAvatarInChangeProgress
 })
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile, getUserStatus, updateUserStatus}),
+    connect(mapStateToProps, {getUserProfile, getUserStatus, updateUserStatus, changeAvatar}),
     withRouter,
 )(ProfileContainer)

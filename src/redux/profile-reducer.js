@@ -1,8 +1,11 @@
-import {profileAPI} from "../api/api";
+import {profileAPI} from "../api/api"
+import {toggleIsFetching} from "./users-reducer";
 
-const ADD_POST = 'ADD-POST';
+const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
+const ADD_AVATAR = 'ADD_AVATAR'
+const SET_AVATAR_IN_CHANGING_PROCESS = 'IS_AVATAR_IN_CHANGING_PROCESS'
 
 let initialState = {
     posts: [
@@ -13,7 +16,8 @@ let initialState = {
         {id: 5, message: 'VVVV', likes: 33},
     ],
     profile: null,
-    status: ''
+    status: '',
+    isAvatarInChangeProcess: false
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -24,16 +28,22 @@ const profileReducer = (state = initialState, action) => {
                 message: action.message,
                 likes: 0
             };
-            let stateCopy = {...state};
-            stateCopy.posts = [...state.posts];
-            stateCopy.posts.push(newPost);
-            return stateCopy;
+            let stateCopy = {...state}
+            stateCopy.posts = [...state.posts]
+            stateCopy.posts.push(newPost)
+            return stateCopy
         }
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
         case SET_USER_STATUS: {
             return {...state, status: action.status}
+        }
+        case ADD_AVATAR: {
+            return {...state, profile: {...state.profile, photos: action.avatar}}
+        }
+        case SET_AVATAR_IN_CHANGING_PROCESS: {
+            return {...state, isAvatarInChangeProgress: action.isInProgress}
         }
         default:
             return state;
@@ -51,8 +61,16 @@ export const setUserStatus = (status) => {
     return {type: SET_USER_STATUS, status}
 }
 
+export const addAvatar = (avatar) => {
+    return {type: ADD_AVATAR, avatar}
+}
 
-//thunk
+export const setAvatarInChangeProcess = (isInProgress) => {
+    return {type: SET_AVATAR_IN_CHANGING_PROCESS, isInProgress}
+}
+
+
+//thunks
 export const getUserProfile = (userId) => async (dispatch) => {
     let data = await profileAPI.getProfile(userId)
     dispatch(setUserProfile(data))
@@ -68,6 +86,15 @@ export const updateUserStatus = (status) => async (dispatch) => {
     if (data.resultCode === 0) {
         dispatch(setUserStatus(status))
     }
+}
+
+export const changeAvatar = (avatar) => async (dispatch) => {
+    dispatch(setAvatarInChangeProcess(true))
+    let data = await profileAPI.uploadAvatar(avatar)
+    if (data.resultCode === 0) {
+        dispatch(addAvatar(data.data.photos))
+    }
+    dispatch(setAvatarInChangeProcess(false))
 }
 
 export default profileReducer;

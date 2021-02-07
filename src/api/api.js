@@ -64,5 +64,13 @@ export const profileAPI = {
             .then(response => {
                 return response.data;
             })
+    },
+    uploadAvatar(avatar) {
+        const formData = new FormData()
+        formData.append('image', avatar)
+        return axiosInstance.put(`profile/photo/`, formData)
+            .then(response => {
+                return response.data;
+            })
     }
 }

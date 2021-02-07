@@ -9,7 +9,13 @@ const Profile = (props) => {
     return (
         <div className={style.profile}>
             <CoverPicture  />
-            <AboutMe profile={props.profile} status={props.status} updateUserStatus={props.updateUserStatus} />
+            <AboutMe changeAvatar={props.changeAvatar}
+                     profile={props.profile}
+                     status={props.status}
+                     updateUserStatus={props.updateUserStatus}
+                     isAvatarInChangeProgress={props.isAvatarInChangeProgress}
+                     isOwner={props.isOwner}
+            />
             <PostsContainer />
         </div>
     )
