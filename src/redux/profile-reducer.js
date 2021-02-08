@@ -1,11 +1,12 @@
 import {profileAPI} from "../api/api"
-import {toggleIsFetching} from "./users-reducer";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 const ADD_AVATAR = 'ADD_AVATAR'
 const SET_AVATAR_IN_CHANGING_PROCESS = 'IS_AVATAR_IN_CHANGING_PROCESS'
+const UPDATE_PROFILE = 'UPDATE_PROFILE'
 
 let initialState = {
     posts: [
@@ -45,6 +46,9 @@ const profileReducer = (state = initialState, action) => {
         case SET_AVATAR_IN_CHANGING_PROCESS: {
             return {...state, isAvatarInChangeProgress: action.isInProgress}
         }
+        case UPDATE_PROFILE: {
+            return {...state, profile: {...action.profileInfo}}
+        }
         default:
             return state;
     }
@@ -68,6 +72,7 @@ export const addAvatar = (avatar) => {
 export const setAvatarInChangeProcess = (isInProgress) => {
     return {type: SET_AVATAR_IN_CHANGING_PROCESS, isInProgress}
 }
+
 
 
 //thunks
@@ -95,6 +100,14 @@ export const changeAvatar = (avatar) => async (dispatch) => {
         dispatch(addAvatar(data.data.photos))
     }
     dispatch(setAvatarInChangeProcess(false))
+}
+
+export const updateProfileInfo = (profileInfo) => async (dispatch, getState) => {
+    const userId = getState().auth.userId
+    let data = await profileAPI.updateProfileInfo(profileInfo)
+    if (data.resultCode === 0) {
+        dispatch(getUserProfile(userId))
+    }
 }
 
 export default profileReducer;

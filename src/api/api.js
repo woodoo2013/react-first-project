@@ -72,5 +72,11 @@ export const profileAPI = {
             .then(response => {
                 return response.data;
             })
+    },
+    updateProfileInfo(profileInfo) {
+        return axiosInstance.put('profile', profileInfo)
+            .then(response => {
+                return response.data
+            })
     }
 }

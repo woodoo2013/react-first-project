@@ -5,7 +5,7 @@
 
     grid-template-areas:
     'about-me-avatar about-me-info';
-    grid-template-rows: 300px;
+    grid-template-rows: 400px;
     grid-template-columns: 1fr 5fr;
 }
 

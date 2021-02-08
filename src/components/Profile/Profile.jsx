@@ -15,6 +15,7 @@ const Profile = (props) => {
                      updateUserStatus={props.updateUserStatus}
                      isAvatarInChangeProgress={props.isAvatarInChangeProgress}
                      isOwner={props.isOwner}
+                     updateProfileInfo={props.updateProfileInfo}
             />
             <PostsContainer />
         </div>
