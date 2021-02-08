@@ -1,6 +1,10 @@
+import style from './Contacts.module.css'
+
 const Contacts = ({contactName, contactValue}) => {
     return (
-        <div><b>{contactName}</b>: {contactValue}</div>
+        <div className={style.contacts}>
+            <b>{contactName}</b>: {contactValue}
+        </div>
     )
 
 }

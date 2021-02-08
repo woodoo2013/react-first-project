@@ -1,12 +1,6 @@
 .aboutMe {
-    grid-area: about-me;
-    display: grid;
+    display: flex;
     margin: 40px 20px;
-
-    grid-template-areas:
-    'about-me-avatar about-me-info';
-    grid-template-rows: 400px;
-    grid-template-columns: 1fr 5fr;
 }
 
 .avatar {

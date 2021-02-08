@@ -9,7 +9,7 @@ import ContactsForm from "./ContactsForm";
 const ProfileInfoForm = (props) => {
     return (
         <form className={style.info} onSubmit={props.handleSubmit}>
-            <button>Save</button>
+            <button>Сохранить</button>
             <h2>{props.profile.fullName}</h2>
             <div>
                 Fullname: {createField('Fullname', 'fullName', [required], Input)}
@@ -18,16 +18,19 @@ const ProfileInfoForm = (props) => {
                 About me: {createField('About me', 'aboutMe', [required], Input)}
             </div>
             <div>
-                Looking for a job: {createField('Looking for a job', 'lookingForAJob', [required], Input, {type: 'checkbox'})}
+                Looking for a
+                job: {createField('Looking for a job', 'lookingForAJob', [required], Input, {type: 'checkbox'})}
             </div>
             <div>
                 Looking for a job: {createField('Looking for a job desc', 'lookingForAJobDescription',
-                            [required], Input, Input)}
+                [required], Input, Input)}
             </div>
-
-            {Object.keys(props.profile.contacts).map((key) => {
+            <div>
+                Контакты: {Object.keys(props.profile.contacts).map((key) => {
                 return <ContactsForm contactName={key}/>
             })}
+            </div>
+
         </form>
     )
 }

@@ -34,19 +34,19 @@ const AboutMe = (props) => {
             <div className={style.avatar}>
                 <Avatar avatar={props.profile.photos.large}/>
             </div>
-
-            {editMode ? <ProfileInfoForm onSubmit={onSubmit} setEditMode={setEditMode} profile={props.profile}/> :
-                        <ProfileInfo changeEditMode={changeEditMode} profile={props.profile}/>}
-
-            <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
-            {props.isOwner &&
             <div>
-                <strong>Сменить аватар</strong>
-                {!props.isAvatarInChangeProgress ?
-                    <input onChange={onMainPhotoSelected} type="file"></input> : <Loader/>
+                <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+                {editMode ? <ProfileInfoForm onSubmit={onSubmit} setEditMode={setEditMode} profile={props.profile}/> :
+                    <ProfileInfo changeEditMode={changeEditMode} profile={props.profile}/>}
+                {props.isOwner &&
+                <div>
+                    <strong>Сменить аватар</strong>
+                    {!props.isAvatarInChangeProgress ?
+                        <input onChange={onMainPhotoSelected} type="file"></input> : <Loader/>
+                    }
+                </div>
                 }
             </div>
-            }
         </div>
     )
 }
